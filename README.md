@@ -20,21 +20,22 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <h2>Deployment and Configuration Steps</h2>
 
-- Step 1: Create 2 virtual machines, one with Windows 10 (Client VM) and the other with Windows Server 2022 (DC/Domain Controller VM)
+- Step 1: Create a new Network Group in Azure, named Active Directory, with 2 VMs; one running a Windows database, the other running Windows 10 
 - Step 2: Set the DC’s NIC private IP address from Dynamic to Static
 - Step 3: Connect to both VMs using Remote Desktop
 - Step 4: Initiate a perpetual ping from the Client to the DC; if there is no reply, enable Core Networking Diagnostics in the DC’s firewall
-- Step 5: Install Active Directory Domain Services on the DC and promote it to a domain controller
-- Step 6: Create an admin account and Organizational Units (OU) in Active Directory Users and Computers (ADUC), then log back in using the admin account
+- Step 5: Install Active Directory on the DC and promote it to a domain controller
+- Step 6: Create an Admin account and Organizational Units (OU) in Active Directory Users and Computers (ADUC), then log back in under the Admin account
 - Step 7: Set the Client’s DNS settings to the DC’s Private IP address, then join the Client to the DC
 - Step 8: Enable Remote Desktop for domain users to access the Client
 - Step 9: Create user accounts using a PowerShell script (run PowerShell ISE as administrator)
 - Step 10: Connect to the Client with Remote Desktop using one of the newly created user accounts
 
-<h2>Deployment and Configuration Steps</h2>
+
+<h2>Setup Resources in Azure</h2>
 
 <p>
-Hello! Welcome to my Active Directory tutorial. Today we're going to start of by creating a new resource group in Azure named Active Directory, and 2 Virtual Machines, one running Windows Server 2022 and the other with Windows 10. Make sure that both VMs are in the same Net work and subnet. The Windows Server 2022 VM will serve as the Domain Controller (DC) and the Windows 10 VM will serve as the Client.  
+Hello! Welcome to my Active Directory tutorial. Today we're going to start of by creating a new resource group in Azure named Active Directory, and 2 Virtual Machines, one running Windows Server 2022 and the other with Windows 10. Make sure that both VMs are in the same Net work and subnet. The Windows Server 2022 VM will serve as the Domain Controller (DC) and the Windows 10 VM will serve as the Client. 
 </p>
 <p>
 <img src="https://i.imgur.com/fgVZSMA.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
@@ -46,30 +47,33 @@ Now we need to set the DC’s NIC (Network Inteface Controller) private IP addre
 <p>
 <img src="https://i.imgur.com/uxbTjwd.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+
+<h2>Ensure Connectivity between DC and Client</h2>
   
 <p>
-After connecting to both VMs using Remote Desktop, to ensure connectivity we will initiate a perpetual ping from the Client to the DC. The requests were timing out, so we will open Windows Defender Firewall in the DC and enabled Core Networking Diagnostics, ICMPv4 protocol. This will allow the DC to reply to the requests. We can view this in cpi.
+After connecting to both VMs using Remote Desktop, to ensure connectivity we will initiate a perpetual ping from the Client to the DC. ICMPv4 is the protocal that ping uses. Now will try and ping the DC from Client with ping -t (perpetual ping).
+</p>
 <p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Agb7Vvz.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 
 <p>
-Now we will log back into DC-1 to install Active Directory Domain Services (AD DS) from the Server Manager Dashboard. Once AD DS was installed, I Promoted the VM to Domain Controller so that it could manage devices and accounts on the domain. I setup a new forest as "mydomain.com" afterwards restart then log back into DC-1 as user: "mydomain.com\labuser". If you performed the steps properly you should be able to run AD Users & Computers as shown below.
+Now we will remote access into DC1 and poke a hole in the firewall to allow ICMPv4 traffic. We will be able to see the ping on the Client side go thru.
 </p>
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p> 
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p> 
 <p>
-Active Directory is all set up! Let's create two(2) Organizational Units (OU) named _ADMINS and _EMPLOYEES. Now, let's create a new User "Jane Doe" as an Administrator with the username: Jane_admin and add her as a member of Domain Admins Security Group. Logged out from the default account we were in and logged back in as jane.
+Active Directory is all set up! Let's create two Organizational Units named _ADMINS and _EMPLOYEES. Now create a new User, I choose Farmer John, as an Administrator with the username: John_admin and add him as a member of Domain Admins Security Group. Log out from the default account we were in and log back in under John.
 </p> 
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <p>
-In order to cintinue setting up my domain, I will join Client-1 to the domain (mydomain.com).From the azure portal we will change client-1's DNS settings to the DC's Private IP address. After you do that restart Client-1 from within the Azure portal. Our picture below shows verification that client-1 is on the DC-1 DNS.
+To be able to continue setting up the domain, I will join Client-1 to the domain (DeanHackwell.com). From Azure, we will change client-1's DNS settings to the DC's Private IP address. After you do that restart Client-1 from within Azure. Restarting Client_1 will flush the dns cashe, this will make more sence in later labs.
 </p>
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
