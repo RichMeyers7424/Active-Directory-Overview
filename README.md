@@ -33,14 +33,23 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <h2>Deployment and Configuration Steps</h2>
 
-Let's start our lab by creating two Virtual Machines (VMs) in Azure, one with Windows Server 2022 and the other with Windows 10.Make sure both VMs are in the same Net work and subnet. The Windows Server 2022 VM would serve as the Domain Controller (DC) and the Windows 10 VM would serve as the Client machine. Also, I set the DC’s NIC (Network Inteface Controller) private IP address from Dynamic to Static, so that later in the lab when I configured the Client’s DNS settings (DC’s private IP address), the Static IP address would make it easier for any services to access where a device is. 
+<p>
+Hello! Welcome to my Active Directory tutorial. Let's start our lab today by creating two Virtual Machines (VMs) in Azure, one running  Windows Server 2022 and the other with Windows 10. Be sure that both VMs are in the same Net work and subnet. The Windows Server 2022 VM will serve as the Domain Controller (DC) and the Windows 10 VM will serve as the Client machine.  
+</p>
+<p>
+<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
 
 <p>
-<img src="https:/" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<p>
-After connecting to both VMs using Remote Desktop, to ensure connectivity I initiated a perpetual ping from the Client to the DC. The requests were timing out, so I opened Windows Defender Firewall in the DC and enabled Core Networking Diagnostics (ICMPv4 protocol). This allowed the DC to reply to the requests as shown in the command-line interface (CLI).
+Now we need to set the DC’s NIC (Network Inteface Controller) private IP address from Dynamic to Static, so that later in the lab when we configure the Client’s DNS settings, the DC’s private IP address, the Static IP address will make it easier for any services to access where a device is. 
 </p>
+<p>
+<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+  
+<p>
+After connecting to both VMs using Remote Desktop, to ensure connectivity we will initiate a perpetual ping from the Client to the DC. The requests were timing out, so we will open Windows Defender Firewall in the DC and enabled Core Networking Diagnostics, ICMPv4 protocol. This will allow the DC to reply to the requests. We can view this in cpi.
+<p>
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
