@@ -34,17 +34,17 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <h2>Deployment and Configuration Steps</h2>
 
 <p>
-Hello! Welcome to my Active Directory tutorial. Let's start our lab today by creating two Virtual Machines (VMs) in Azure, one running  Windows Server 2022 and the other with Windows 10. Be sure that both VMs are in the same Net work and subnet. The Windows Server 2022 VM will serve as the Domain Controller (DC) and the Windows 10 VM will serve as the Client machine.  
+Hello! Welcome to my Active Directory tutorial. Today we're going to start of by creating a new resource group in Azure named Active Directory, and 2 Virtual Machines, one running Windows Server 2022 and the other with Windows 10. Make sure that both VMs are in the same Net work and subnet. The Windows Server 2022 VM will serve as the Domain Controller (DC) and the Windows 10 VM will serve as the Client.  
 </p>
 <p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/fgVZSMA.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 
 <p>
-Now we need to set the DC’s NIC (Network Inteface Controller) private IP address from Dynamic to Static, so that later in the lab when we configure the Client’s DNS settings, the DC’s private IP address, the Static IP address will make it easier for any services to access where a device is. 
+Now we need to set the DC’s NIC (Network Inteface Controller) private IP address from Dynamic to Static. Later in the lab when we configure the Client’s DNS settings, the DC’s private IP address, the Static IP address will make it easier for any services to access where a device is. 
 </p>
 <p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/uxbTjwd.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
   
 <p>
@@ -53,10 +53,11 @@ After connecting to both VMs using Remote Desktop, to ensure connectivity we wil
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
 
 <p>
 Now we will log back into DC-1 to install Active Directory Domain Services (AD DS) from the Server Manager Dashboard. Once AD DS was installed, I Promoted the VM to Domain Controller so that it could manage devices and accounts on the domain. I setup a new forest as "mydomain.com" afterwards restart then log back into DC-1 as user: "mydomain.com\labuser". If you performed the steps properly you should be able to run AD Users & Computers as shown below.
-<p>
+</p>
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p> 
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
