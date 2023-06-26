@@ -60,13 +60,33 @@ After connecting to both VMs using Remote Desktop, to ensure connectivity we wil
 <br />
 
 <p>
-Now we will remote access into DC1 and poke a hole in the firewall to allow ICMPv4 traffic. We will be able to see the ping on the Client side go thru.
+Now we will remote access into DC1 and poke a hole in the firewall to allow ICMPv4 traffic. We will be able to see the ping on the Client side go thru. To do this, we will need to access the firewall settings in DC_1 thru the Windows Defender Firewall with Advanced Security -> Inbound Rules -> and enable ICMPv4 Core Networking Diagnostics.
 </p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/UlHs1ZB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p> 
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/yHP1K55.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p> 
+<br />
+
 <p>
+Be sure to select the Active Directory Domain Services in Server Roles to install the proper version. Click on Install and there we go! There is a bit more configuration to do before everthing is ready to use.
+</p>
+<p>
+<img src="https://i.imgur.com/8MfOmMa.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<br /> i.imgur.com/8MfOmMa.png
+
+<p>
+Now we will create a new forest, the root domain name, you can choose anything you'd like, I'm going to choose DeanHackwell.com.  Most walkthroughs use MyDomain.com as a default.
+</p>
+<p>
+<img scr="https://i.imgur.com/5oDPCj4.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<p>
+<img scr="https://i.imgur.com/RNqbud0.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<br />
+/i.imgur.com/5oDPCj4.pn i.imgur.com/RNqbud0.png
+
 Active Directory is all set up! Let's create two Organizational Units named _ADMINS and _EMPLOYEES. Now create a new User, I choose Farmer John, as an Administrator with the username: John_admin and add him as a member of Domain Admins Security Group. Log out from the default account we were in and log back in under John.
 </p> 
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
