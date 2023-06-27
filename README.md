@@ -56,7 +56,6 @@ After connecting to both VMs using Remote Desktop, to ensure connectivity we wil
 <p>
 <img src="https://i.imgur.com/Agb7Vvz.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 
 <p>
@@ -68,24 +67,25 @@ Now we will remote access into DC1 and poke a hole in the firewall to allow ICMP
 </p> 
 <br />
 
+<h2>Install Active Directory</h2>
+
 <p>
-Be sure to select the Active Directory Domain Services in Server Roles to install the proper version. Click on Install and there we go! There is a bit more configuration to do before everthing is ready to use.
+Login to DC-1 and install Active Directory Domain Service. Be sure to select the Active Directory Domain Services in Server Roles to install the proper version. Just continue on setting up the defaults. There is a bit more configuration to do before everthing is ready to use.
 </p>
 <p>
 <img src="https://i.imgur.com/8MfOmMa.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
-<br /> i.imgur.com/8MfOmMa.png
+<br />
 
 <p>
-Now we will create a new forest, the root domain name, you can choose anything you'd like, I'm going to choose DeanHackwell.com.  Most walkthroughs use MyDomain.com as a default.
+We will need to create a new forest, name it anything you'd like! I'm going to choose Deans_Domain.com, most walkthroughs I've seen have just used MyDomain.com as a default. Most likely the vm will automaticlly, then log back in under the new domain that we just created.  For example, when i go to connect to DC_1, I will log in as Deans_Domain.com\Labuser1.
 </p>
 <p>
-<img scr="https://i.imgur.com/5oDPCj4.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/PflKIDE.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <p>
-<img scr="https://i.imgur.com/RNqbud0.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/XKw2BPK.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
-/i.imgur.com/5oDPCj4.pn i.imgur.com/RNqbud0.png
 
 Active Directory is all set up! Let's create two Organizational Units named _ADMINS and _EMPLOYEES. Now create a new User, I choose Farmer John, as an Administrator with the username: John_admin and add him as a member of Domain Admins Security Group. Log out from the default account we were in and log back in under John.
 </p> 
