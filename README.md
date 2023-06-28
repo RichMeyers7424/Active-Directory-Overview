@@ -87,13 +87,19 @@ We will need to create a new forest, name it anything you'd like! I'm going to c
 </p>
 <br />
 
-Active Directory is all set up! Let's create two Organizational Units named _ADMINS and _EMPLOYEES. Now create a new User, I choose Farmer John, as an Administrator with the username: John_admin and add him as a member of Domain Admins Security Group. Log out from the default account we were in and log back in under John.
+<p>
+Active Directory is all set up! Let's create two Organizational Units named _ADMINS and _EMPLOYEES. To do so, in the upper left hand side of the Server Manager Dashboard, click on tools, then Active Directory Users and Computers.  
 </p> 
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
+<br />
+
+<p> 
+Now create a new User, I choose Jane Doe, as an Administrator with the username: Jane_admin and add her as a member of Domain Admins Security Group. Log out from the default account we were in and log back in under Jane.
+</p>
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <p>
-To be able to continue setting up the domain, I will join Client-1 to the domain (DeanHackwell.com). From Azure, we will change client-1's DNS settings to the DC's Private IP address. After you do that restart Client-1 from within Azure. Restarting Client_1 will flush the dns cashe, this will make more sence in later labs.
+To be able to continue setting up the domain, I will join Client-1 to the domain (Deans_Domian.com). From Azure, we will change client-1's DNS settings to the DC's Private IP address. After you do that restart Client-1 from within Azure. Restarting Client_1 will flush the dns cashe, this will make more sence in later labs.
 </p>
 <img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
