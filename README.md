@@ -88,46 +88,33 @@ We will need to create a new forest, name it anything you'd like! I'm going to c
 <br />
 
 <p>
-Active Directory is all set up! Let's create two Organizational Units named _ADMINS and _EMPLOYEES. To do so, in the upper left hand side of the Server Manager Dashboard, click on tools, then Active Directory Users and Computers.  
+Active Directory is all set up! Let's create two Organizational Units in our domain named _ADMINS and _EMPLOYEES. To do so, in the upper left hand side of the Server Manager Dashboard, click on tools, then Active Directory Users and Computers.  
 </p> 
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/nJAyHQg.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <br />
 
 <p> 
 Now create a new User, I choose Jane Doe, as an Administrator with the username: Jane_admin and add her as a member of Domain Admins Security Group. Log out from the default account we were in and log back in under Jane.
 </p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/zwBeNnj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<img src="https://i.imgur.com/vchgXRe.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <p>
 To be able to continue setting up the domain, I will join Client-1 to the domain (Deans_Domian.com). From Azure, we will change client-1's DNS settings to the DC's Private IP address. After you do that restart Client-1 from within Azure. Restarting Client_1 will flush the dns cashe, this will make more sence in later labs.
 </p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Ugf8277.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
 Now we will set up remote desktop for non-administrative users on Client-1. We have to log into Client-1 as an admin and open system properties. Click on "Remote Desktop", allow "domain users" access to remote desktop. Enabling this for Domain Users would allow for any user accounts in the domain to be able to log into Client-1 as a normal user.
 </p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/ZtM4tbW.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br /> 
 </p>
-Finally, to verify that noraml users can RDP into Client-1, I will use a Powershell script to generate 10,000 (Thousands) of users into the domain. After the users are created we will randomly select one and RDP into Client-1.
+Finally, to verify that noraml users can RDP into Client-1, we will use a Powershell script to generate 10,000 (Thousands) of users into the domain. After the users are created we will randomly select one and RDP into Client-1.
 </p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/jNlb1r0.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
-<img src="" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
+<br />
 
-<h3>Bonus Step: How to unlock users' accounts and reset passwords</h3>
-In order to unlock a user's account, right click the user account and click "Properties." 
-Click on "Unlock Account." You can also right click the user account and "Reset Password..."
 
-<p>
-<img src="" height="80%" width="80%" alt="49"/>
-</p>
-
-<p>
-<img src="" height="80%" width="80%" alt="50"/>
-</p>
-
-<p>
-<img src="" height="80%" width="80%" alt="51"/>
-</p>
