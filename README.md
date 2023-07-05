@@ -25,11 +25,11 @@ This tutorial outlines the implementation of on-premises Active Directory within
 - Step 3: Connect to both VMs using Remote Desktop
 - Step 4: Initiate a perpetual ping from the Client to the DC; if there is no reply, enable Core Networking Diagnostics in the DC’s firewall
 - Step 5: Install Active Directory on the DC and promote it to a domain controller
-- Step 6: Create an Admin account and Organizational Units (OU) in Active Directory Users and Computers (ADUC), then log back in under the Admin account
+- Step 6: Create an Admin account and Organizational Units in Active Directory Users and Computers, then log back in under the Admin account
 - Step 7: Set the Client’s DNS settings to the DC’s Private IP address, then join the Client to the DC
 - Step 8: Enable Remote Desktop for domain users to access the Client
 - Step 9: Create user accounts using a PowerShell script (run PowerShell ISE as administrator)
-- Step 10: Connect to the Client with Remote Desktop using one of the newly created user accounts
+
 
 
 <h2>Setup Resources in Azure</h2>
@@ -99,7 +99,8 @@ Now create a new User, I choose Jane Doe, as an Administrator with the username:
 </p>
 <img src="https://i.imgur.com/zwBeNnj.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
-<img src="https://i.imgur.com/vchgXRe.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+
 <p>
 To be able to continue setting up the domain, I will join Client-1 to the domain (Deans_Domian.com). From Azure, we will change client-1's DNS settings to the DC's Private IP address. After you do that restart Client-1 from within Azure. Restarting Client_1 will flush the dns cashe, this will make more sence in later labs.
 </p>
